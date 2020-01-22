@@ -1,0 +1,43 @@
+/**  =====================
+      Custom css start
+==========================  **/
+body{
+    color: $black-color;
+    font-size: $font-size-base;
+    font-family: $sans-serif-family;
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-font-smoothing: antialiased;
+    background-color: #f4f3ef;
+}
+
+* {
+    &:focus {
+        outline: none;
+    }
+}
+
+a {
+    &:hover {
+        outline: none;
+        text-decoration: none;
+    }
+}
+
+button,
+input,
+optgroup,
+select,
+textarea{
+    font-family: $sans-serif-family;
+}
+h1,h2,h3,h4,h5,h6{
+    font-weight: $font-weight-normal;
+}
+
+img{
+    max-width: 100%;
+    border-radius: $border-radius-small;
+}
+.img-raised{
+    box-shadow: $box-shadow-raised;
+}
