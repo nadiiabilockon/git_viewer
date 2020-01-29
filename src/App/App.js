@@ -27,7 +27,6 @@ class App extends Component {
                     <NavBar />
                         <Switch>
                             {menu}
-                            {/* <Route path="/" component={AdminLayout} /> */}
                         </Switch>
                     </Suspense>
                 </Container>
