@@ -1,11 +1,11 @@
 import React from 'react';
 
 const DashboardMain = React.lazy(() => import("./components/Main"));
-const User = React.lazy(() => import("./components/User"));
+const InfoList = React.lazy(() => import("./components/InfoList"));
 
 const route = [
-  { path: "/", exact: true, name: "User", component: User },
-  { path: "/user", exact: true, name: "User", component: User }
+  { path: "/", exact: true, name: "Main", component: DashboardMain },
+  { path: "/user/info", exact: true, name: "InfoList", component: InfoList }
 ];
 
 export default route;
