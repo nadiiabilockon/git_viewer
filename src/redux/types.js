@@ -1,2 +1,4 @@
 export const RECEIVE_USER_DATA = "RECEIVE_USER_DATA";
 export const RECEIVE_USER_DETAILES = "RECEIVE_USER_DETAILES";
+export const SET_PENDING = "SET_PENDING";
+export const SET_ERROR = "SET_ERROR";

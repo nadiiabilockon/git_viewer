@@ -6,6 +6,9 @@ import { useDispatch, useSelector } from "react-redux";
 export default function Search() {
   const [userInput, setUserInput] = useState("");
   const dispatch = useDispatch();
+  const { error } = useSelector(state => ({
+    error: state.error
+  }));
 
   const handleSearch = e => {
     setUserInput(e.target.value);
@@ -48,6 +51,7 @@ export default function Search() {
               </Button>
             </Col>
           </Row>
+          {error ?  <Row>vdfvdfv</Row> : null}
         </Form>
       </Card.Body>
     </Card>

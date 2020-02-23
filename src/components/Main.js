@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 import { Row, Col, Container } from "react-bootstrap";
 import Search from "./Search";
 import UserProfile from "./User";

@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from "react";
-import { Card, Row, Col, Button } from "react-bootstrap";
+import { Card, Row, Col } from "react-bootstrap";
 import { TiUser, TiBook } from "react-icons/ti";
-import InfoList from "./InfoList";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 
 function User(props) {
@@ -13,11 +12,7 @@ function User(props) {
   const [repos, setRepos] = useState("");
   const [avatar, setAvatar] = useState("");
   const [profileBio, setBio] = useState("");
-  const [error, setError] = useState("");
-  const [info, setInfo] = useState([]);
-  const [show, toggleShow] = useState(false);
   const user = useSelector(state => state.user);
-  const dispatch = useDispatch();
 
   useEffect(() => {
     setData(user);
@@ -40,18 +35,6 @@ function User(props) {
     setAvatar(avatar_url);
     setBio(bio);
   };
-
-  // const handleInfo = params => {
-  //   axios
-  //     .get(`${githubAPI}${userName}/${params}`)
-  //     .then(data => {
-  //       setInfo(data.data);
-  //       toggleShow(params);
-  //     })
-  //     .catch(function(error) {
-  //       console.log(error);
-  //     });
-  // };
 
   const cardFooterData = [
     { prop: followers, info: "followers", img: <TiUser /> },
@@ -81,19 +64,18 @@ function User(props) {
             {cardFooterData.map((el, index) => {
               return (
                 <Col key={index} className="ml-auto" lg="3" md="6" xs="6">
-                 <span>{el.img}
-                  {el.prop}
-                   </span> 
+                  <Link to={`/git_viewer/user/${el.info}`}>
+                    <span>
+                      {el.img}
+                      {el.prop}
+                    </span>
+                  </Link>
                 </Col>
               );
             })}
           </Row>
         </div>
-        <div className="text-center mt-3">
-          <Link to={`/user/info`}>More Info</Link>
-        </div>
       </Card.Footer>
-      {/* {show ? <InfoList info={info} header={show} /> : null} */}
     </Card>
   );
 }
