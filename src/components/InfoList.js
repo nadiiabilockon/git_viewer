@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchUserDetails } from "../redux/actions";
 import Loader from "../App/layout/Loader/index";
-
+import { Breadcrumbs, BreadcrumbsItem } from "react-breadcrumbs-dynamic";
 export default function InfoList(props) {
   const { userDetails, isLoginPending, user } = useSelector(state => ({
     userDetails: state.userDetails,
@@ -23,6 +23,7 @@ export default function InfoList(props) {
   } else {
     return (
       <Card>
+        <BreadcrumbsItem to="/git_viewer">Main Page</BreadcrumbsItem>
         <Card.Header>
           <Card.Title tag="h4">
             {title.replace(/^\w/, c => c.toUpperCase())}
@@ -56,8 +57,11 @@ export default function InfoList(props) {
                     ) : (
                       <Row>
                         <Col>
-                          <Link to={`/branch/${el.default_branch}`}>
-                            {el.name}{" "}
+                          <Link
+                            title="Show details"
+                            to={`/git_viewer/${user.login}/${title}/${el.name}`}
+                          >
+                            {el.name}
                           </Link>
                           <Row>
                             <Col md="5" xs="5">

@@ -1,11 +1,14 @@
 import React, { Component } from "react";
 import { Navbar } from "react-bootstrap";
+import { Link } from "react-router-dom";
 
 class NavBar extends Component {
   render() {
     return (
       <Navbar expand="lg">
-        <Navbar.Brand href="/git_viewer">Git viewer</Navbar.Brand>
+        <Navbar.Brand>
+          <Link to="/git_viewer" style={{color: 'inherit'}}>Git viewer</Link>
+        </Navbar.Brand>
         {/* <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="mr-auto">

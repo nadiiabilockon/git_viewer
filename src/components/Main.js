@@ -8,9 +8,10 @@ import { useDispatch, useSelector } from "react-redux";
 
 function Main() {
   const dispatch = useDispatch();
+  const user = useSelector(state => state.user);
 
   useEffect(() => {
-    dispatch(fetchUserData('example'));
+    if (!Object.keys(user).length) dispatch(fetchUserData("example"));
   });
 
   return (
