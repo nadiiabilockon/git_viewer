@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import Loader from "../App/layout/Loader/index";
 import { getBranchDetails, getCommits } from "../services/APIsersices";
 import { Card, ListGroup } from "react-bootstrap";
-import { BreadcrumbsItem } from "react-breadcrumbs-dynamic";
 
 export default function Branch(props) {
   const [branch, setBranchInfo] = useState({});
@@ -26,11 +25,8 @@ export default function Branch(props) {
 
   return (
     <Card>
-      <BreadcrumbsItem to={`/git_viewer/${owner}/${info}`}>
-        {info}
-      </BreadcrumbsItem>
       <Card.Header>
-        <Card.Title tag="h4">{branch.name}</Card.Title>
+        <Card.Title tag="h4">{branch.name} commits</Card.Title>
       </Card.Header>{" "}
       <Card.Body>
         {!Object.keys(commits).length ? (

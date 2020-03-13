@@ -17,25 +17,13 @@ export default function Search() {
   const handleSubmit = e => {
     e.preventDefault();
     dispatch(fetchUserData(userInput));
-    // axios
-    //   .get(`${githubAPI}${userInput}`)
-    //   .then(data => {
-    //     setData(data.data);
-    //   })
-    //   .catch(function(error) {
-    //     // handle error
-    //     console.log(error);
-    //     setError("Not found");
-    //   });
   };
   return (
     <Card className="card-user">
-      <Card.Header>
-        <Card.Title tag="h5">Search user</Card.Title>
-      </Card.Header>
+      <h5 className="text-center mt-4">Search user</h5>
       <Card.Body>
         <Form onSubmit={handleSubmit}>
-          <Row>
+          <Row className="justify-content-center">
             <Col className="pr-1" md="5">
               <FormGroup>
                 <Form.Control
@@ -46,12 +34,16 @@ export default function Search() {
               </FormGroup>
             </Col>
             <Col className="px-1" md="3">
-              <Button className="btn-round" color="primary" type="submit">
+              <Button className="btn-round" variant="dark" type="submit">
                 Search
               </Button>
             </Col>
           </Row>
-          {error ?  <Row>vdfvdfv</Row> : null}
+          {error ? (
+            <Row className="justify-content-center">
+              <p>No user with this name</p>
+            </Row>
+          ) : null}
         </Form>
       </Card.Body>
     </Card>

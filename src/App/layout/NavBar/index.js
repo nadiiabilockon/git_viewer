@@ -7,15 +7,10 @@ class NavBar extends Component {
     return (
       <Navbar expand="lg">
         <Navbar.Brand>
-          <Link to="/git_viewer" style={{color: 'inherit'}}>Git viewer</Link>
+          <Link to="/git_viewer">
+            <img src={require("../../../assets/img/Brand.png")}></img>
+          </Link>
         </Navbar.Brand>
-        {/* <Navbar.Toggle aria-controls="basic-navbar-nav" />
-          <Navbar.Collapse id="basic-navbar-nav">
-            <Nav className="mr-auto">
-              <Nav.Link href="#home">Home</Nav.Link>
-              <Nav.Link href="#link">Link</Nav.Link>
-            </Nav>
-          </Navbar.Collapse> */}
       </Navbar>
     );
   }

@@ -1,43 +1,73 @@
 /**  =====================
       Custom css start
 ==========================  **/
-body{
-    color: $black-color;
-    font-size: $font-size-base;
-    font-family: $sans-serif-family;
-    -moz-osx-font-smoothing: grayscale;
-    -webkit-font-smoothing: antialiased;
-    background-color: #f4f3ef;
+body {
+  color: $black-color;
+  font-size: $font-size-base;
+  font-family: $sans-serif-family;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  background-color: $background-base;
 }
 
 * {
-    &:focus {
-        outline: none;
-    }
+  &:focus {
+    outline: none;
+  }
 }
 
 a {
-    &:hover {
-        outline: none;
-        text-decoration: none;
-    }
+  color: inherit;
+  &:hover {
+    outline: none;
+    text-decoration: none;
+    color: inherit;
+  }
 }
 
 button,
 input,
 optgroup,
 select,
-textarea{
-    font-family: $sans-serif-family;
+textarea {
+  font-family: $sans-serif-family;
 }
-h1,h2,h3,h4,h5,h6{
-    font-weight: $font-weight-normal;
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: $font-weight-normal;
 }
 
-img{
-    max-width: 100%;
-    border-radius: $border-radius-small;
+img {
+  max-width: 100%;
+  border-radius: $border-radius-small;
 }
-.img-raised{
-    box-shadow: $box-shadow-raised;
+
+.img-raised {
+  box-shadow: $box-shadow-raised;
+}
+
+.form-control:focus {
+  box-shadow: none;
+  border-color: inherit;
+}
+
+.btn-dark {
+  // color: $black-color;
+  // background-color: #ffff00b2;
+  // border-color: #ffff00d0;
+  &:hover {
+    color: $black-color;
+    background-color: #ffff00;
+    border-color: #ffff00;
+  }
+}
+
+.navbar-brand {
+  img {
+    height: 50px;
+  }
 }

@@ -1,7 +1,6 @@
 import React, { Component, Suspense } from "react";
 import { Switch, Route, NavLink } from "react-router-dom";
 import { Container } from "react-bootstrap";
-import { Breadcrumbs } from "react-breadcrumbs-dynamic";
 import Loader from "./layout/Loader";
 import routes from "../route";
 import NavBar from "./layout/NavBar";
@@ -24,7 +23,6 @@ class App extends Component {
       <Container>
         <Suspense fallback={<Loader />}>
           <NavBar />
-          <Breadcrumbs separator={<b> / </b>} item={NavLink} />
           <Switch>{menu}</Switch>
         </Suspense>
       </Container>
