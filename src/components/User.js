@@ -4,7 +4,7 @@ import { TiUser, TiBook } from "react-icons/ti";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 
-function User(props) {
+function User() {
   const [name, setName] = useState("");
   const [userName, setUserName] = useState("");
   const [followers, setFollowers] = useState("");

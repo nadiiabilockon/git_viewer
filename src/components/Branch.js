@@ -13,11 +13,11 @@ export default function Branch(props) {
     getCommits(owner, branchName).then(data => setCommits(data.data));
   }, []);
 
-  console.log(commits);
-
   const showCommits = index => {
     return (
-      <ListGroup.Item>{commits[index]["commit"]["message"]}</ListGroup.Item>
+      <ListGroup.Item key={index}>
+        {commits[index]["commit"]["message"]}
+      </ListGroup.Item>
     );
   };
 

@@ -39,11 +39,7 @@ export default function Search() {
               </Button>
             </Col>
           </Row>
-          {error ? (
-            <Row className="justify-content-center">
-              <p>No user with this name</p>
-            </Row>
-          ) : null}
+          {error ? <Row className="justify-content-center">{error}</Row> : null}
         </Form>
       </Card.Body>
     </Card>

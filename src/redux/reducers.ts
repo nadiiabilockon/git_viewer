@@ -27,7 +27,7 @@ export const rootReducer = (state: initialState = initialState, action: any) => 
         error: action.payload
       };
     case types.RECEIVE_USER_DATA:
-      return { ...state, user: action.payload, isLoginPending: false };
+      return { ...state, user: action.payload, isLoginPending: false, error: false };
     case types.RECEIVE_USER_DETAILES:
       return { ...state, userDetails: action.payload, isLoginPending: false };
     default:

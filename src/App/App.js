@@ -1,5 +1,5 @@
 import React, { Component, Suspense } from "react";
-import { Switch, Route, NavLink } from "react-router-dom";
+import { Switch, Route } from "react-router-dom";
 import { Container } from "react-bootstrap";
 import Loader from "./layout/Loader";
 import routes from "../route";

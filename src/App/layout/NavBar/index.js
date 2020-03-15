@@ -8,7 +8,10 @@ class NavBar extends Component {
       <Navbar expand="lg">
         <Navbar.Brand>
           <Link to="/git_viewer">
-            <img src={require("../../../assets/img/Brand.png")}></img>
+            <img
+              alt="Brand"
+              src={require("../../../assets/img/Brand.png")}
+            ></img>
           </Link>
         </Navbar.Brand>
       </Navbar>
