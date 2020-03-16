@@ -1,12 +1,13 @@
 import React, { useState, useEffect } from "react";
 import { Button, Card, FormGroup, Form, Row, Col } from "react-bootstrap";
-import { fetchUserData } from "../redux/actions";
 import { useDispatch, useSelector } from "react-redux";
+import { fetchUserData } from "../redux/actions";
+import { InitialState } from "../redux/userReducer";
 
-export default function Search() {
+export default function Search () {
   const [userInput, setUserInput] = useState("");
   const dispatch = useDispatch();
-  const { error } = useSelector(state => ({
+  const { error } = useSelector((state: InitialState) => ({
     error: state.error
   }));
 

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import Loader from "../App/layout/Loader/index";
+import Loader from "./Loader/index";
 import { getBranchDetails, getCommits } from "../services/APIsersices";
 import { Card, ListGroup } from "react-bootstrap";
 

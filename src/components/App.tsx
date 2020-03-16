@@ -1,9 +1,9 @@
 import React, { Component, Suspense } from "react";
 import { Switch, Route } from "react-router-dom";
 import { Container } from "react-bootstrap";
-import Loader from "./layout/Loader";
+import Loader from "./Loader";
 import routes from "../route";
-import NavBar from "./layout/NavBar";
+import NavBar from "./NavBar";
 
 class App extends Component {
   render() {

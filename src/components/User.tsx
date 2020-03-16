@@ -3,6 +3,7 @@ import { Card, Row, Col } from "react-bootstrap";
 import { TiUser, TiBook } from "react-icons/ti";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
+import { RootState } from "../redux";
 
 function User() {
   const [name, setName] = useState("");
@@ -12,7 +13,8 @@ function User() {
   const [repos, setRepos] = useState("");
   const [avatar, setAvatar] = useState("");
   const [profileBio, setBio] = useState("");
-  const user = useSelector(state => state.user);
+
+  const user = useSelector((state: RootState) => state.userReducer);
 
   useEffect(() => {
     setData(user);

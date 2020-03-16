@@ -1,20 +1,20 @@
 import * as types from "./types";
 
-export type initialState = {
+export interface InitialState {
   user: Object,
   userDetails: Array<any>,
   isLoginPending: boolean,
   error: string | null
 }
 
-export const initialState: initialState = {
+export const initialState: InitialState = {
   user: {},
   userDetails: [],
   isLoginPending: false,
   error: null
 };
 
-export const rootReducer = (state: initialState = initialState, action: any) => {
+export const userReducer = (state: InitialState = initialState, action: any) => {
   switch (action.type) {
     case types.SET_PENDING:
       return {

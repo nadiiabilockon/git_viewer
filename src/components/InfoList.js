@@ -3,7 +3,7 @@ import { Card, Row, Col, ListGroup } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchUserDetails } from "../redux/actions";
-import Loader from "../App/layout/Loader/index";
+import Loader from "./Loader/index";
 
 export default function InfoList(props) {
   const { userDetails, isLoginPending, user } = useSelector(state => ({

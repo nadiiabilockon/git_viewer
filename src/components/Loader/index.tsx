@@ -1,7 +1,7 @@
 import React from "react";
 import { Spinner } from "react-bootstrap";
 
-const loader = () => {
+const loader: React.FC = () => {
   return (
     <div className="text-center">
       <Spinner

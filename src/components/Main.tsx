@@ -1,14 +1,16 @@
 import React, { useEffect } from "react";
 import { Row, Col, Container } from "react-bootstrap";
+import { useDispatch, useSelector } from "react-redux";
+
 import Search from "./Search";
 import UserProfile from "./User";
 import { fetchUserData } from "../redux/actions";
+import { InitialState } from "../redux/userReducer";
 
-import { useDispatch, useSelector } from "react-redux";
 
-function Main() {
+const Main: React.FC = () => {
   const dispatch = useDispatch();
-  const user = useSelector(state => state.user);
+  const user = useSelector((state: InitialState) => state.user);
 
   useEffect(() => {
     if (!Object.keys(user).length) dispatch(fetchUserData("example"));
@@ -16,7 +18,7 @@ function Main() {
 
   return (
     <Container>
-      <Row>
+      <Row className="align-items-stretch">
         <Col md="4">
           <UserProfile />
         </Col>
