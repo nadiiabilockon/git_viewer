@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from "react";
-import Loader from "./Loader/index";
+import Loader from "./Loader";
 import { getBranchDetails, getCommits } from "../services/APIsersices";
 import { Card, ListGroup } from "react-bootstrap";
 
-export default function Branch(props) {
+export default function BranchCommits(props: { match: { params: { owner: string; info: string; branch: string; }; }; }) {
   const [branch, setBranchInfo] = useState({});
   const [commits, setCommits] = useState({});
   const { owner, info, branch: branchName } = props.match.params;
@@ -13,7 +13,7 @@ export default function Branch(props) {
     getCommits(owner, branchName).then(data => setCommits(data.data));
   }, []);
 
-  const showCommits = index => {
+  const showCommits = (index) => {
     return (
       <ListGroup.Item key={index}>
         {commits[index]["commit"]["message"]}
@@ -26,16 +26,16 @@ export default function Branch(props) {
   return (
     <Card>
       <Card.Header>
-        <Card.Title tag="h4">{branch.name} commits</Card.Title>
+        <Card.Title>{branchName} commits</Card.Title>
       </Card.Header>{" "}
       <Card.Body>
         {!Object.keys(commits).length ? (
           <div>No data</div>
         ) : (
-          <ListGroup variant="flush">
-            {Object.keys(commits).map(showCommits)}
-          </ListGroup>
-        )}
+            <ListGroup variant="flush">
+              {Object.keys(commits).map(showCommits)}
+            </ListGroup>
+          )}
       </Card.Body>
     </Card>
   );

@@ -5,15 +5,15 @@ import { useDispatch, useSelector } from "react-redux";
 import Search from "./Search";
 import UserProfile from "./User";
 import { fetchUserData } from "../redux/actions";
-import { InitialState } from "../redux/userReducer";
+import { RootState } from "../redux";
 
 
 const Main: React.FC = () => {
   const dispatch = useDispatch();
-  const user = useSelector((state: InitialState) => state.user);
+  const { user } = useSelector((state: RootState) => state.userReducer);
 
   useEffect(() => {
-    if (!Object.keys(user).length) dispatch(fetchUserData("example"));
+    if (!user || !Object.keys(user).length) dispatch(fetchUserData("example"));
   });
 
   return (

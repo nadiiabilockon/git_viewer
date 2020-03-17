@@ -4,38 +4,31 @@ import { TiUser, TiBook } from "react-icons/ti";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { RootState } from "../redux";
+import { User as UserType } from "../redux/userReducer";
 
-function User() {
+const User: React.FC = () => {
   const [name, setName] = useState("");
   const [userName, setUserName] = useState("");
-  const [followers, setFollowers] = useState("");
-  const [following, setFollowing] = useState("");
-  const [repos, setRepos] = useState("");
+  const [followers, setFollowers] = useState(0);
+  const [following, setFollowing] = useState(0);
+  const [repos, setRepos] = useState(0);
   const [avatar, setAvatar] = useState("");
   const [profileBio, setBio] = useState("");
 
-  const user = useSelector((state: RootState) => state.userReducer);
+  const { user } = useSelector((state: RootState) => state.userReducer);
 
   useEffect(() => {
     setData(user);
   }, [user]);
 
-  const setData = ({
-    name,
-    login,
-    followers,
-    following,
-    public_repos,
-    avatar_url,
-    bio
-  }) => {
-    setName(name);
-    setUserName(login);
-    setFollowers(followers);
-    setFollowing(following);
-    setRepos(public_repos);
-    setAvatar(avatar_url);
-    setBio(bio);
+  const setData = (user: UserType) => {
+    setName(user.name);
+    setUserName(user.login);
+    setFollowers(user.followers);
+    setFollowing(user.following);
+    setRepos(user.public_repos);
+    setAvatar(user.avatar_url);
+    setBio(user.bio);
   };
 
   const cardFooterData = [

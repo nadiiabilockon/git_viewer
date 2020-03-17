@@ -1,24 +1,19 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { Button, Card, FormGroup, Form, Row, Col } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchUserData } from "../redux/actions";
-import { InitialState } from "../redux/userReducer";
+import { RootState } from "../redux";
 
-export default function Search () {
-  const [userInput, setUserInput] = useState("");
+const Search: React.FC = () => {
+  const [userInput, setUserInput] = useState<string>("");
+  const { error } = useSelector((state: RootState) => state.userReducer);
   const dispatch = useDispatch();
-  const { error } = useSelector((state: InitialState) => ({
-    error: state.error
-  }));
 
-  const handleSearch = e => {
-    setUserInput(e.target.value);
-  };
-
-  const handleSubmit = e => {
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>): void => {
     e.preventDefault();
     dispatch(fetchUserData(userInput));
   };
+
   return (
     <Card className="card-user">
       <h5 className="text-center mt-4">Search user</h5>
@@ -30,7 +25,7 @@ export default function Search () {
                 <Form.Control
                   placeholder="Github user"
                   type="text"
-                  onChange={handleSearch}
+                  onChange={e => setUserInput(e.target.value)}
                 />
               </FormGroup>
             </Col>
@@ -46,3 +41,5 @@ export default function Search () {
     </Card>
   );
 }
+
+export default Search
