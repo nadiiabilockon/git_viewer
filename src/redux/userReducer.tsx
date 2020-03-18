@@ -1,4 +1,5 @@
 import * as types from "./types";
+import { Action } from "./types"
 
 export interface User {
   name: string;
@@ -17,14 +18,14 @@ export interface InitialState {
   error: string | null
 }
 
-export const initialState: InitialState = {
+export const defaultState: InitialState = {
   user: {} as User,
   userDetails: [],
   isLoginPending: false,
   error: null
 };
 
-export const userReducer = (state: InitialState = initialState, action: any): InitialState => {
+export const userReducer = (state: InitialState = defaultState, action: Action): InitialState => {
   switch (action.type) {
     case types.SET_PENDING:
       return {

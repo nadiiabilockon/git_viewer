@@ -13,7 +13,7 @@ export default function BranchCommits(props: { match: { params: { owner: string;
     getCommits(owner, branchName).then(data => setCommits(data.data));
   }, []);
 
-  const showCommits = (index) => {
+  const showCommits = (index: string | number) => {
     return (
       <ListGroup.Item key={index}>
         {commits[index]["commit"]["message"]}
@@ -27,7 +27,7 @@ export default function BranchCommits(props: { match: { params: { owner: string;
     <Card>
       <Card.Header>
         <Card.Title>{branchName} commits</Card.Title>
-      </Card.Header>{" "}
+      </Card.Header>
       <Card.Body>
         {!Object.keys(commits).length ? (
           <div>No data</div>

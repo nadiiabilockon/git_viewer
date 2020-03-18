@@ -1,7 +1,7 @@
 import * as types from "./types";
 import { findUser, getDetails } from "../services/APIsersices";
 
-export function fetchUserData(id) {
+export function fetchUserData(id: string) {
   return dispatch => {
     findUser(id)
       .then(response => {
@@ -23,15 +23,15 @@ export function fetchUserData(id) {
   };
 }
 
-function receiveUserData(data) {
+function receiveUserData(data: any) {
   return {
     type: types.RECEIVE_USER_DATA,
     payload: data
   };
 }
 
-export function fetchUserDetails(prop, user) {
-  return dispatch => {
+export function fetchUserDetails(prop: string, user: string) {
+  return (dispatch) => {
     dispatch({ type: types.SET_PENDING });
     getDetails(user, prop)
       .then(response => {
@@ -43,14 +43,14 @@ export function fetchUserDetails(prop, user) {
   };
 }
 
-function receiveUserDetails(data) {
+function receiveUserDetails(data: any): types.Action {
   return {
     type: types.RECEIVE_USER_DETAILES,
     payload: data
   };
 }
 
-function gotError(data) {
+function gotError(data: string): types.Action {
   return {
     type: types.SET_ERROR,
     payload: data
