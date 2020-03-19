@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
-import { getBranches, getBranchesDiff, getCommits } from "../services/APIsersices";
+import { getBranches, getCommits } from "../services/APIsersices";
 import { Card, Form, Row, Col, Button } from "react-bootstrap";
+import Commits from "./Commits"
 import { Commit } from "../models//interfaces";
 
 interface SelectValue {
@@ -13,8 +14,8 @@ export default function BranchesDiff(props: {
     const [branches, setNames] = useState<string[]>([]);
     const [firstBranch, setfirstBranch] = useState<string>("");
     const [secondBranch, setsecondBranch] = useState<string>("");
-    const [commitsFirst, setCommitsFirst] = useState<Commit[]>([]);
-    const [commitsSecond, setCommitsSecond] = useState<Commit[]>([]);
+    const [commitsFirst, setCommitsFirst] = useState<string[]>([]);
+    const [commitsSecond, setCommitsSecond] = useState<string[]>([]);
 
 
     const { owner, repo } = props.match.params;
@@ -46,9 +47,18 @@ export default function BranchesDiff(props: {
     //         })
     // };
 
-    const handleCommits = (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
-        getCommits(owner, firstBranch).then(data => setCommitsFirst(data.data));
-        getCommits(owner, secondBranch).then(data => setCommitsSecond(data.data));
+    function setCommits(data: any, callback: any) {
+        const commits = data.map((e: Commit) => {
+            return { "message": e.commit.message, "name": e.commit.author.name, 'date': e.commit.author.date };
+        });
+        callback(commits)
+    }
+
+    const handleCommits = async () => {
+        await getCommits(owner, repo, firstBranch)
+            .then(data => setCommits(data.data, setCommitsFirst));
+        await getCommits(owner, repo, secondBranch)
+            .then(data => setCommits(data.data, setCommitsSecond));
     }
 
     return (
@@ -76,7 +86,7 @@ export default function BranchesDiff(props: {
                         />
                     </Row>
                     <Row>
-                        <Col className="px-1" md="3">
+                        <Col>
                             <Button className="btn-round" variant="dark" onClick={handleCommits}>
                                 Show commits difference
                             </Button>
@@ -85,9 +95,11 @@ export default function BranchesDiff(props: {
                 </Form>
                 <hr></hr>
                 <Row>
-                    <Col>
+                    <Col xs="6">
+                        <Commits data={commitsFirst} />
                     </Col>
-                    <Col>
+                    <Col xs="6">
+                        <Commits data={commitsSecond} />
                     </Col>
                 </Row>
             </Card.Body>

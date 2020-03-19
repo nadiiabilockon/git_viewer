@@ -29,9 +29,10 @@ export function getReposDetails(
 
 export function getCommits(
   id: string,
-  repo: string
+  repo: string,
+  branch:string
 ): Promise<ServerResponse<Array<Commit>>> {
-  return axios.get(`${githubAPI}repos/${id}/${repo}/commits`);
+  return axios.get(`${githubAPI}repos/${id}/${repo}/commits?sha=${branch}`);
 }
 
 export function getBranches(

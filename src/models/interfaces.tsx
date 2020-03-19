@@ -19,6 +19,10 @@ export interface UserDetails {
 export interface Commit {
     commit: {
         message: string;
+        author: {
+            date: Date;
+            name: string
+        }
     };
 }
 
