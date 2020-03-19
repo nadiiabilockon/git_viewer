@@ -1,15 +1,6 @@
 import * as types from "./types";
 import { Action } from "./types"
-
-export interface User {
-  name: string;
-  login: string;
-  followers: number;
-  following: number;
-  public_repos: number;
-  avatar_url: string;
-  bio: string;
-}
+import { User } from "../models/interfaces"
 
 export interface InitialState {
   user: User,

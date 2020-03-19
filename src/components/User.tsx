@@ -4,7 +4,7 @@ import { TiUser, TiBook } from "react-icons/ti";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { RootState } from "../redux";
-import { User as UserType } from "../redux/userReducer";
+import { User as UserType } from "../models/interfaces";
 
 const User: React.FC = () => {
   const [name, setName] = useState("");

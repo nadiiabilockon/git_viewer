@@ -6,7 +6,8 @@ import NavBar from "./NavBar";
 
 const DashboardMain = React.lazy(() => import("./Main"));
 const InfoList = React.lazy(() => import("./InfoList"));
-const BranchCommits = React.lazy(() => import("./BranchCommits"));
+const Commits = React.lazy(() => import("./Commits"));
+const BranchesDiff = React.lazy(() => import("./BranchesDiff"));
 
 class App extends Component {
   render() {
@@ -23,7 +24,10 @@ class App extends Component {
               path="/git_viewer/:owner/:info" exact={true} component={InfoList}
             />
             <Route
-              path="/git_viewer/:owner/:info/:branch" exact={true} component={BranchCommits}
+              path="/git_viewer/:owner/:repo/compare/branches" exact={true} component={BranchesDiff}
+            />
+            <Route
+              path="/git_viewer/:owner/:info/:repo" exact={true} component={Commits}
             />
           </Switch>
         </Suspense>

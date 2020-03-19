@@ -1,12 +1,13 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 import { Card, Row, Col, ListGroup } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchUserDetails } from "../redux/actions";
 import { RootState } from "../redux";
 import Loader from "./Loader/index";
+import { UserDetails } from "../models/interfaces"
 
-export default function InfoList (props: { match: { params: { info: string; }; }; }) {
+export default function InfoList(props: { match: { params: { info: string; }; }; }) {
   const { userDetails, isLoginPending, user } = useSelector((state: RootState) => state.userReducer);
 
   const title = props.match.params.info;
@@ -41,7 +42,7 @@ export default function InfoList (props: { match: { params: { info: string; }; }
 }
 
 const RenderListItems = ({ userDetails, title, user }) => {
-  return userDetails.map((el: { login: React.ReactNode; avatar_url: string | undefined; name: React.ReactNode; default_branch: React.ReactNode; language: React.ReactNode; }, index: string | number | undefined) => {
+  return userDetails.map((el: UserDetails, index: string | number | undefined) => {
     return (
       <ListGroup.Item key={index}>
         {title !== "repos" ? (
@@ -64,12 +65,9 @@ const RenderListItems = ({ userDetails, title, user }) => {
         ) : (
             <Row>
               <Col>
-                <Link
-                  title="Show details"
-                  to={`/git_viewer/${user.login}/${title}/${el.name}`}
-                >
+                <Row>
                   {el.name}
-                </Link>
+                </Row>
                 <Row>
                   <Col md="5" xs="5">
                     <span className="text-muted">
@@ -82,6 +80,24 @@ const RenderListItems = ({ userDetails, title, user }) => {
                     <small>{el.default_branch}</small>
                     <br />
                     <small>{el.language}</small>
+                  </Col>
+                </Row>
+                <Row className="justify-content-between">
+                  <Col>
+                    <Link
+                      className="mt-2 btn btn-outline-info btn-sm"
+                      to={`/git_viewer/${user.login}/${el.name}/compare/branches`}
+                    >
+                      Compare branches
+                    </Link>
+                  </Col>
+                  <Col className="text-right">
+                    <Link
+                      className="mt-2 btn btn-outline-info btn-sm"
+                      to={`/git_viewer/${user.login}/${title}/${el.name}`}
+                    >
+                      Check commits
+                  </Link>
                   </Col>
                 </Row>
               </Col>

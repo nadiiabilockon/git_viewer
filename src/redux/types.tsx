@@ -1,4 +1,4 @@
-import { User } from "./userReducer"
+import { User } from "../models/interfaces"
 
 export const RECEIVE_USER_DATA = "RECEIVE_USER_DATA";
 export const RECEIVE_USER_DETAILES = "RECEIVE_USER_DETAILES";
