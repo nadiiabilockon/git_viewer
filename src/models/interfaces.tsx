@@ -17,6 +17,7 @@ export interface UserDetails {
 }
 
 export interface Commit {
+    sha: string;
     commit: {
         message: string;
         author: {

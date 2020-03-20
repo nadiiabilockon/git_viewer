@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from "react";
 import { getBranches, getCommits } from "../services/APIsersices";
 import { Card, Form, Row, Col, Button } from "react-bootstrap";
-import Commits from "./Commits"
+import Select from 'react-select';
+import Commits from "./Commits";
 import { Commit } from "../models//interfaces";
 
 interface SelectValue {
-    (event: React.FormEvent<HTMLSelectElement>, name: string): void;
+    (selected: { value: string }, name: string): void;
 }
 
 export default function BranchesDiff(props: {
@@ -16,7 +17,6 @@ export default function BranchesDiff(props: {
     const [secondBranch, setsecondBranch] = useState<string>("");
     const [commitsFirst, setCommitsFirst] = useState<string[]>([]);
     const [commitsSecond, setCommitsSecond] = useState<string[]>([]);
-
 
     const { owner, repo } = props.match.params;
 
@@ -29,13 +29,11 @@ export default function BranchesDiff(props: {
         });
     }, []);
 
-    const handleSelectChange: SelectValue = (event, name) => {
-        const value = event.currentTarget.value;
-
+    const handleSelectChange: SelectValue = (selected, name) => {
         if (name === "firstBranch") {
-            setfirstBranch(value);
+            setfirstBranch(selected.value);
         } else {
-            setsecondBranch(value);
+            setsecondBranch(selected.value);
         }
     };
 
@@ -48,18 +46,33 @@ export default function BranchesDiff(props: {
     // };
 
     function setCommits(data: any, callback: any) {
-        const commits = data.map((e: Commit) => {
-            return { "message": e.commit.message, "name": e.commit.author.name, 'date': e.commit.author.date };
+        const commits = data.map((e: Commit): Commit => {
+            return {
+                sha: e.sha,
+                'commit': {
+                    message: e.commit.message,
+                    author: {
+                        name: e.commit.author.name,
+                        date: e.commit.author.date
+                    }
+                }
+            };
         });
-        callback(commits)
+        callback(commits);
     }
 
     const handleCommits = async () => {
-        await getCommits(owner, repo, firstBranch)
-            .then(data => setCommits(data.data, setCommitsFirst));
-        await getCommits(owner, repo, secondBranch)
-            .then(data => setCommits(data.data, setCommitsSecond));
-    }
+        await getCommits(owner, repo, firstBranch).then(data =>
+            setCommits(data.data, setCommitsFirst)
+        );
+        await getCommits(owner, repo, secondBranch).then(data =>
+            setCommits(data.data, setCommitsSecond)
+        );
+    };
+
+    const selectOptions = branches.map(el => {
+        return { value: el, label: el }
+    })
 
     return (
         <Card>
@@ -69,25 +82,34 @@ export default function BranchesDiff(props: {
             <Card.Body>
                 <Card.Subtitle className="mb-2 text-muted">
                     Select branches
-                </Card.Subtitle>
+        </Card.Subtitle>
                 <Form>
                     <Row className="justify-content-center">
-                        <RenderOptions
-                            name="firstBranch"
-                            branch={secondBranch}
-                            options={branches}
-                            handleChange={handleSelectChange}
-                        />
-                        <RenderOptions
-                            name="secondBranch"
-                            branch={firstBranch}
-                            options={branches}
-                            handleChange={handleSelectChange}
-                        />
+                        <Col>
+                            <Form.Group>
+                                <Select
+                                    options={selectOptions.filter(el => el.value !== secondBranch)}
+                                    onChange={e => handleSelectChange(e, 'firstBranch')}
+                                />
+                            </Form.Group>
+                        </Col>
+                        <Col>
+                            <Form.Group>
+                                <Select
+                                    options={selectOptions.filter(el => el.value !== firstBranch)}
+                                    onChange={e => handleSelectChange(e, 'secondBranch')}
+                                />
+                            </Form.Group>
+                        </Col>
                     </Row>
                     <Row>
                         <Col>
-                            <Button className="btn-round" variant="dark" onClick={handleCommits}>
+                            <Button
+                                className="btn-round"
+                                variant="dark"
+                                onClick={handleCommits}
+                                disabled={!firstBranch || !secondBranch}
+                            >
                                 Show commits difference
                             </Button>
                         </Col>
@@ -106,32 +128,3 @@ export default function BranchesDiff(props: {
         </Card>
     );
 }
-
-const RenderOptions = (props: {
-    handleChange: SelectValue;
-    name: string;
-    options: string[];
-    branch: string;
-}) => {
-    return (
-        <Col>
-            <Form.Group>
-                <select
-                    required
-                    className="custom-select mr-sm-2"
-                    onChange={e => props.handleChange(e, props.name)}
-                >
-                    {props.options.map((el: string, i: string | number) => {
-                        if (el !== props.branch) {
-                            return (
-                                <option key={i} value={el}>
-                                    {el}
-                                </option>
-                            );
-                        }
-                    })}
-                </select>
-            </Form.Group>
-        </Col>
-    );
-};
