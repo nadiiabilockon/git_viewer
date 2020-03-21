@@ -94,9 +94,9 @@ const RenderListItems = ({ userDetails, title, user }) => {
                   <Col className="text-right">
                     <Link
                       className="mt-2 btn btn-outline-info btn-sm"
-                      to={`/git_viewer/${user.login}/${title}/${el.name}`}
+                      to={`/git_viewer/${user.login}/${el.name}/compare/branches`}
                     >
-                      Check commits
+                      Compare commits
                   </Link>
                   </Col>
                 </Row>

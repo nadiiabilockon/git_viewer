@@ -20,13 +20,6 @@ export function getDetails(
   return axios.get(`${githubAPI}users/${id}/${prop}`);
 }
 
-export function getReposDetails(
-  id: string,
-  repo: string
-): Promise<ServerResponse<Array<Object>>> {
-  return axios.get(`${githubAPI}repos/${id}/${repo}`);
-}
-
 export function getCommits(
   id: string,
   repo: string,

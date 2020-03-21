@@ -77,12 +77,12 @@ export default function BranchesDiff(props: {
     return (
         <Card>
             <Card.Header>
-                <Card.Title>Compare branches</Card.Title>
+                <Card.Title>Compare</Card.Title>
             </Card.Header>
             <Card.Body>
                 <Card.Subtitle className="mb-2 text-muted">
                     Select branches
-        </Card.Subtitle>
+                </Card.Subtitle>
                 <Form>
                     <Row className="justify-content-center">
                         <Col>
@@ -102,7 +102,7 @@ export default function BranchesDiff(props: {
                             </Form.Group>
                         </Col>
                     </Row>
-                    <Row>
+                    <Row className="text-center">
                         <Col>
                             <Button
                                 className="btn-round"
@@ -110,7 +110,7 @@ export default function BranchesDiff(props: {
                                 onClick={handleCommits}
                                 disabled={!firstBranch || !secondBranch}
                             >
-                                Show commits difference
+                                Show difference
                             </Button>
                         </Col>
                     </Row>
