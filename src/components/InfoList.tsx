@@ -84,12 +84,12 @@ const RenderListItems = ({ userDetails, title, user }) => {
                 </Row>
                 <Row className="justify-content-between">
                   <Col>
-                    <Link
+                    {/* <Link
                       className="mt-2 btn btn-outline-info btn-sm"
                       to={`/git_viewer/${user.login}/${el.name}/compare/branches`}
                     >
                       Compare branches
-                    </Link>
+                    </Link> */}
                   </Col>
                   <Col className="text-right">
                     <Link
