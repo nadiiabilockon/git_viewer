@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from "react";
+import { useParams } from "react-router";
 import { getBranches, getCommits } from "../services/APIsersices";
 import { Card, Form, Row, Col, Button } from "react-bootstrap";
 import Select from "react-select";
+
 import Commits from "./Commits";
 import { Commit } from "../models//interfaces";
 
@@ -9,16 +11,14 @@ interface SelectValue {
   (selected: { value: string }, name: string): void;
 }
 
-export default function BranchesDiff(props: {
-  match: { params: { owner: string; repo: string } };
-}) {
+export default function BranchesDiff() {
   const [branches, setNames] = useState<string[]>([]);
   const [firstBranch, setfirstBranch] = useState<string>("");
   const [secondBranch, setsecondBranch] = useState<string>("");
   const [commitsFirst, setCommitsFirst] = useState<string[]>([]);
   const [commitsSecond, setCommitsSecond] = useState<string[]>([]);
 
-  const { owner, repo } = props.match.params;
+  const { owner, repo } = useParams<any>();
 
   useEffect(() => {
     getBranches(owner, repo).then(data => {
@@ -77,60 +77,53 @@ export default function BranchesDiff(props: {
   });
 
   return (
-    <Card>
-      <Card.Header>
-        <Card.Title>Compare</Card.Title>
-      </Card.Header>
-      <Card.Body>
-        <Card.Subtitle className="mb-2 text-muted">
-          Select branches
-        </Card.Subtitle>
-        <Form>
-          <Row className="justify-content-center">
-            <Col>
-              <Form.Group>
-                <Select
-                  options={selectOptions.filter(
-                    el => el.value !== secondBranch
-                  )}
-                  onChange={(e: { value: string }) =>
-                    handleSelectChange(e, "firstBranch")
-                  }
-                />
-              </Form.Group>
-            </Col>
-            <Col>
-              <Form.Group>
-                <Select
-                  options={selectOptions.filter(el => el.value !== firstBranch)}
-                  onChange={(e: { value: string; }) => handleSelectChange(e, "secondBranch")}
-                />
-              </Form.Group>
-            </Col>
-          </Row>
-          <Row className="text-center">
-            <Col>
-              <Button
-                className="btn-round"
-                variant="dark"
-                onClick={handleCommits}
-                disabled={!firstBranch || !secondBranch}
-              >
-                Show difference
-              </Button>
-            </Col>
-          </Row>
-        </Form>
-        <hr></hr>
-        <Row>
-          <Col xs="6">
-            <Commits data={commitsFirst} />
+    <Card.Body>
+      <Card.Subtitle className="mb-2 text-muted">Select branches</Card.Subtitle>
+      <Form>
+        <Row className="justify-content-center">
+          <Col>
+            <Form.Group>
+              <Select
+                options={selectOptions.filter(el => el.value !== secondBranch)}
+                onChange={(e: { value: string }) =>
+                  handleSelectChange(e, "firstBranch")
+                }
+              />
+            </Form.Group>
           </Col>
-          <Col xs="6">
-            <Commits data={commitsSecond} />
+          <Col>
+            <Form.Group>
+              <Select
+                options={selectOptions.filter(el => el.value !== firstBranch)}
+                onChange={(e: { value: string }) =>
+                  handleSelectChange(e, "secondBranch")
+                }
+              />
+            </Form.Group>
           </Col>
         </Row>
-      </Card.Body>
-    </Card>
+        <Row className="text-center">
+          <Col>
+            <Button
+              className="btn-round"
+              variant="dark"
+              onClick={handleCommits}
+              disabled={!firstBranch || !secondBranch}
+            >
+              Show difference
+            </Button>
+          </Col>
+        </Row>
+      </Form>
+      <hr></hr>
+      <Row>
+        <Col xs="6">
+          <Commits data={commitsFirst} />
+        </Col>
+        <Col xs="6">
+          <Commits data={commitsSecond} />
+        </Col>
+      </Row>
+    </Card.Body>
   );
 }
