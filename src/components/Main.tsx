@@ -3,7 +3,7 @@ import { Row, Col, Container } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 
 import Search from "./Search";
-import UserProfile from "./User";
+import UserCard from "./User/UserCard";
 import { fetchUserData } from "../redux/actions";
 import { RootState } from "../redux";
 
@@ -20,7 +20,7 @@ const Main: React.FC = () => {
     <Container>
       <Row className="align-items-stretch">
         <Col md="4">
-          <UserProfile />
+          <UserCard />
         </Col>
         <Col md="8">
           <Search />

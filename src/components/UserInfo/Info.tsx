@@ -10,7 +10,7 @@ import { Card } from "react-bootstrap";
 import { TiArrowBackOutline } from "react-icons/ti";
 
 import InfoList from "./InfoList";
-import BranchesDiff from "./BranchesDiff";
+import BranchMain from "../BranchDetails/BranchMain";
 
 export default function Info() {
   const renderInfoList = () => {
@@ -18,7 +18,7 @@ export default function Info() {
   };
 
   const renderBranches = () => {
-    return <BranchesDiff />;
+    return <BranchMain />;
   };
 
   const error = () => {

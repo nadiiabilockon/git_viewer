@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { ListGroup } from "react-bootstrap";
 import InfiniteScroll from "react-infinite-scroller";
-import showItems from './ShowItems'
+import CommitItems from './CommitItems'
 
 export default function Commits(props: { data: Object[] }) {
   const [items, setItems] = useState<number>(5);
@@ -26,7 +26,7 @@ export default function Commits(props: { data: Object[] }) {
           loader={"Loading..."}
           useWindow={true}
         >
-          {showItems(items, props.data)}
+          {CommitItems(items, props.data)}
         </InfiniteScroll>
       ) : null}
     </ListGroup>

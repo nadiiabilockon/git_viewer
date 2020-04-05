@@ -6,11 +6,10 @@ import Loader from "./Loader";
 import NavBar from "./NavBar";
 
 const DashboardMain = React.lazy(() => import("./Main"));
-const Info = React.lazy(() => import("./Info"));
+const Info = React.lazy(() => import("./UserInfo/Info"));
 
 class App extends Component {
   render() {
-
     return (
       <Container>
         <Suspense fallback={<Loader />}>
