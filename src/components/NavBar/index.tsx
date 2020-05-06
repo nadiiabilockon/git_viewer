@@ -6,7 +6,7 @@ const NavBar: React.FC = () => {
   return (
     <Navbar expand="lg">
       <Navbar.Brand>
-        <Link to="/git_viewer">
+        <Link to="/">
           <img
             alt="Brand"
             src={require("../../assets/img/Brand.png")}

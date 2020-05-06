@@ -39,7 +39,7 @@ export default function ReposInfoItem({
           <Col className="text-right">
             <Link
               className="mt-2 btn btn-outline-info btn-sm"
-              to={`/git_viewer/${login}/${title}/${repoName}/branches`}
+              to={`/${login}/${title}/${repoName}/branches`}
             >
               Compare commits
             </Link>

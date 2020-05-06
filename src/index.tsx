@@ -10,7 +10,7 @@ import { ThroughProvider } from "react-through";
 export const store = configureStore();
 
 ReactDOM.render(
-  <BrowserRouter>
+  <BrowserRouter basename={process.env.PUBLIC_URL}>
     <Provider store={store}>
       <ThroughProvider>
         <App />

@@ -16,10 +16,10 @@ class App extends Component {
           <NavBar />
           <Switch>
             <Route
-              path="/git_viewer" exact={true} component={DashboardMain}
+              path="/" exact={true} component={DashboardMain}
             />
             <Route
-              path="/git_viewer/:owner/:info" component={Info}
+              path="/:owner/:info" component={Info}
             />
           </Switch>
         </Suspense>
