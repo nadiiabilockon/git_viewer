@@ -1,22 +1,22 @@
 {
   "files": {
-    "static/js/0.c64857f0.chunk.js": "/git_viewer/static/js/0.c64857f0.chunk.js",
-    "static/js/0.c64857f0.chunk.js.map": "/git_viewer/static/js/0.c64857f0.chunk.js.map",
+    "static/js/0.50562ae2.chunk.js": "/git_viewer/static/js/0.50562ae2.chunk.js",
+    "static/js/0.50562ae2.chunk.js.map": "/git_viewer/static/js/0.50562ae2.chunk.js.map",
     "main.css": "/git_viewer/static/css/main.882933f0.chunk.css",
-    "main.js": "/git_viewer/static/js/main.aea23438.chunk.js",
-    "main.js.map": "/git_viewer/static/js/main.aea23438.chunk.js.map",
-    "runtime-main.js": "/git_viewer/static/js/runtime-main.7cb1bb2c.js",
-    "runtime-main.js.map": "/git_viewer/static/js/runtime-main.7cb1bb2c.js.map",
+    "main.js": "/git_viewer/static/js/main.798f2af2.chunk.js",
+    "main.js.map": "/git_viewer/static/js/main.798f2af2.chunk.js.map",
+    "runtime-main.js": "/git_viewer/static/js/runtime-main.9723e8c8.js",
+    "runtime-main.js.map": "/git_viewer/static/js/runtime-main.9723e8c8.js.map",
     "static/js/3.218d3387.chunk.js": "/git_viewer/static/js/3.218d3387.chunk.js",
     "static/js/3.218d3387.chunk.js.map": "/git_viewer/static/js/3.218d3387.chunk.js.map",
-    "static/js/4.1a68cc31.chunk.js": "/git_viewer/static/js/4.1a68cc31.chunk.js",
-    "static/js/4.1a68cc31.chunk.js.map": "/git_viewer/static/js/4.1a68cc31.chunk.js.map",
-    "static/js/5.1e3fa9dc.chunk.js": "/git_viewer/static/js/5.1e3fa9dc.chunk.js",
-    "static/js/5.1e3fa9dc.chunk.js.map": "/git_viewer/static/js/5.1e3fa9dc.chunk.js.map",
-    "static/js/6.e140f372.chunk.js": "/git_viewer/static/js/6.e140f372.chunk.js",
-    "static/js/6.e140f372.chunk.js.map": "/git_viewer/static/js/6.e140f372.chunk.js.map",
+    "static/js/4.27c2d969.chunk.js": "/git_viewer/static/js/4.27c2d969.chunk.js",
+    "static/js/4.27c2d969.chunk.js.map": "/git_viewer/static/js/4.27c2d969.chunk.js.map",
+    "static/js/5.0b359e87.chunk.js": "/git_viewer/static/js/5.0b359e87.chunk.js",
+    "static/js/5.0b359e87.chunk.js.map": "/git_viewer/static/js/5.0b359e87.chunk.js.map",
+    "static/js/6.7dd26340.chunk.js": "/git_viewer/static/js/6.7dd26340.chunk.js",
+    "static/js/6.7dd26340.chunk.js.map": "/git_viewer/static/js/6.7dd26340.chunk.js.map",
     "index.html": "/git_viewer/index.html",
-    "precache-manifest.1d8597c6ca36fcde026ce88b492fc8b8.js": "/git_viewer/precache-manifest.1d8597c6ca36fcde026ce88b492fc8b8.js",
+    "precache-manifest.dc916229b1e36fc42ab02dff32b1a56c.js": "/git_viewer/precache-manifest.dc916229b1e36fc42ab02dff32b1a56c.js",
     "service-worker.js": "/git_viewer/service-worker.js",
     "static/css/main.882933f0.chunk.css.map": "/git_viewer/static/css/main.882933f0.chunk.css.map",
     "static/js/3.218d3387.chunk.js.LICENSE.txt": "/git_viewer/static/js/3.218d3387.chunk.js.LICENSE.txt",
@@ -24,9 +24,9 @@
     "static/media/damir-bosnjak.jpg": "/git_viewer/static/media/damir-bosnjak.a6f24e7d.jpg"
   },
   "entrypoints": [
-    "static/js/runtime-main.7cb1bb2c.js",
+    "static/js/runtime-main.9723e8c8.js",
     "static/js/3.218d3387.chunk.js",
     "static/css/main.882933f0.chunk.css",
-    "static/js/main.aea23438.chunk.js"
+    "static/js/main.798f2af2.chunk.js"
   ]
 }
